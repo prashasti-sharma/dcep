@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback - DCeP</title>
+  <link rel="stylesheet" href="style5.css">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">DCeP</div>
+    <nav>
+      <ul>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="dms.html">Chats</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="feedback-section">
+      <h1>We Value Your Feedback</h1>
+      <p>Your feedback helps us improve the platform and serve you better. Please share your thoughts below:</p>
+      
+      <form action="/submit-feedback" method="POST" id="feedback-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+          <label for="feedback">Your Feedback</label>
+          <textarea id="feedback" name="feedback" rows="4" required placeholder="Write your feedback here"></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit.html">Submit Feedback</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DCeP - All rights reserved.</p>
+  </footer>
+
+  <script src="src/app.js"></script>
+</body>
+</html>

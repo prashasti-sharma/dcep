@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report an Issue - DCeP</title>
+  <link rel="stylesheet" href="style2.css">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <section class="report-issue">
+      <h1>Report an Issue</h1>
+      <p>Please fill out the form below to report a civic issue. Your contribution will help improve the community!</p>
+      
+      <form id="issue-form">
+        <label for="issue-title">Issue Title</label>
+        <input type="text" id="issue-title" name="title" placeholder="Enter the title of the issue" required>
+
+        <label for="issue-description">Description</label>
+        <textarea id="issue-description" name="description" placeholder="Provide a detailed description of the issue" required></textarea>
+
+        <label for="issue-location">Location</label>
+        <input type="text" id="issue-location" name="location" placeholder="Enter the location of the issue" required>
+
+        <label for="issue-category">Category</label>
+        <select id="issue-category" name="category" required>
+          <option value="">Select Category</option>
+          <option value="Road Issue">Road Issue</option>
+          <option value="Waste Management">Waste Management</option>
+          <option value="Water Supply">Water Supply</option>
+          <option value="Electricity">Electricity</option>
+          <option value="Public Safety">Public Safety</option>
+          <option value="Others">Others</option>
+        </select>
+
+        <label for="issue-image">Upload Image (Optional)</label>
+        <input type="file" id="issue-image" name="image" accept="image/*">
+
+        <button type="submit">Submit Report</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DCeP - All rights reserved.</p>
+  </footer>
+
+  <script src="src/app.js"></script>
+</body>
+</html>

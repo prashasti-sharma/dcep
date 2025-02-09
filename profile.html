@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - DCeP</title>
+  <link rel="stylesheet" href="style1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo">DCeP</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="report-issue.html">Report Issue</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="profile">
+      <div class="profile-header">
+        <img src="default-profile.jpg" alt="Profile Picture" class="profile-picture">
+        <h1 id="username">User Name</h1>
+        <p id="user-bio">Short bio or description of the user.</p>
+      </div>
+
+      <div class="profile-stats">
+        <h2>Statistics</h2>
+        <p><strong>Issues Reported:</strong> <span id="issues-reported">0</span></p>
+        <p><strong>Points Earned:</strong> <span id="points-earned">0</span></p>
+        <p><strong>Leaderboard Rank:</strong> <span id="leaderboard-rank">#0</span></p>
+      </div>
+
+      <button id="login-btn" onclick="showLoginModal()">Login / Sign Up</button>
+    </section>
+  </main>
+
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <div id="login-form-container">
+        <h2>Login</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="username-input">Username</label>
+            <input type="text" id="username-input" name="username" required placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label for="password-input">Password</label>
+            <input type="password" id="password-input" name="password" required placeholder="Enter password">
+          </div>
+          <div class="form-group">
+            <button type="submit" onclick="handleLogin(event)">Login</button>
+          </div>
+        </form>
+        <p>Don't have an account? <span onclick="toggleToSignUp()">Sign Up</span></p>
+      </div>
+      <div id="signup-form-container" style="display:none;">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" name="username" required placeholder="Choose a username">
+            <small id="username-error" style="color: red; display: none;">Username is required.</small>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="email" required placeholder="Enter email">
+            <small id="email-error" style="color: red; display: none;">Please enter a valid email.</small>
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="password" required placeholder="Choose a password">
+            <small id="password-error" style="color: red; display: none;">Password must be at least 6 characters long.</small>
+          </div>
+          <div class="form-group">
+            <label for="signup-confirm-password">Confirm Password</label>
+            <input type="password" id="signup-confirm-password" name="confirm-password" required placeholder="Confirm password">
+            <small id="confirm-password-error" style="color: red; display: none;">Passwords do not match.</small>
+          </div>
+          <div class="form-group">
+            <button type="submit" onclick="handleSignUp(event)">Sign Up</button>
+          </div>
+        </form>
+        <p>Already have an account? <span onclick="toggleToLogin()">Login</span></p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 DCeP - All rights reserved.</p>
+  </footer>
+
+  <script src="/models/User.js"></script>
+  <script>
+    function showLoginModal() {
+      document.getElementById('login-modal').style.display = 'block';
+    }
+    function closeLoginModal() {
+      document.getElementById('login-modal').style.display = 'none';
+    }
+    function toggleToSignUp() {
+      document.getElementById('login-form-container').style.display = 'none';
+      document.getElementById('signup-form-container').style.display = 'block';
+    }
+    function toggleToLogin() {
+      document.getElementById('signup-form-container').style.display = 'none';
+      document.getElementById('login-form-container').style.display = 'block';
+    }
+    function handleLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username-input').value;
+      const password = document.getElementById('password-input').value;
+
+      console.log("Username:", username);
+      console.log("Password:", password);
+
+      localStorage.setItem('loggedIn', true);
+      localStorage.setItem('username', username);
+
+      closeLoginModal();
+      updateProfilePage();
+    }
+
+    function handleSignUp(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('signup-username').value;
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+      let valid = true;
+
+      if (!username) {
+        document.getElementById('username-error').style.display = 'inline';
+        valid = false;
+      } else {
+        document.getElementById('username-error').style.display = 'none';
+      }
+
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById('email-error').style.display = 'inline';
+        valid = false;
+      } else {
+        document.getElementById('email-error').style.display = 'none';
+      }
+
+      if (password.length < 6) {
+        document.getElementById('password-error').style.display = 'inline';
+        valid = false;
+      } else {
+        document.getElementById('password-error').style.display = 'none';
+      }
+
+      if (password !== confirmPassword) {
+        document.getElementById('confirm-password-error').style.display = 'inline';
+        valid = false;
+      } else {
+        document.getElementById('confirm-password-error').style.display = 'none';
+      }
+
+      if (valid) {
+        console.log("Sign Up - Username:", username);
+        console.log("Sign Up - Email:", email);
+        console.log("Sign Up - Password:", password);
+
+        localStorage.setItem('loggedIn', true);
+        localStorage.setItem('username', username);
+
+        closeLoginModal();
+        updateProfilePage();
+      }
+    }
+
+    function updateProfilePage() {
+      const isLoggedIn = localStorage.getItem('loggedIn');
+      const username = localStorage.getItem('username');
+
+      if (isLoggedIn) {
+        document.getElementById('username').innerText = username;
+        document.getElementById('login-btn').style.display = 'none'; 
+      } else {
+        document.getElementById('login-btn').style.display = 'inline-block'; 
+      }
+    }
+    window.onload = function() {
+      updateProfilePage();
+    };
+  </script>
+
+</body>
+</html>

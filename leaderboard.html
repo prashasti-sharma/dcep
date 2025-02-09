@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaderboard - DCeP</title>
+  <link rel="stylesheet" href="style3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">DCeP</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="report-issue.html">Report Issue</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="leaderboard">
+      <h1>Top Contributors</h1>
+      <p>Check out the top contributors who are making a difference in our community!</p>
+
+      <div class="leaderboard-container">
+        <ul id="leaderboard-list">
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DCeP - All rights reserved.</p>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js"></script>
+  <script src="app1.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Civic Engagement Platform</title>
+  <link rel="stylesheet" href="/src/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="logo">DCeP</div>
+    <nav>
+      <ul>
+        <li><a href="Feedback.html">Feedback</a></li>
+        <li><a href="notifications.html">Notifications</a></li>
+        <li><a href="dms.html">Chats</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <h1>Make a Difference with DCeP</h1>
+      <p>Join the community, report civic issues, and contribute to urban improvement.</p>
+      <div class="buttons">
+        <button onclick="window.location.href='report-issue.html'">Report an Issue</button>
+        <button onclick="window.location.href='explore.html'">Explore Projects</button>
+      </div>
+    </section>
+
+    <section class="leaderboard">
+      <h2>Top Contributors</h2>
+      <ul id="leaderboard-list">
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DCeP - All rights reserved.</p>
+  </footer>
+
+  <script src="src/app.js"></script>
+
+</body>
+</html>
